@@ -67,6 +67,7 @@
   .inputbox .cursor{display:inline-block;width:2px;height:1.1em;background:var(--wa-green);
     margin-inline-start:1px;animation:blink 1s steps(1) infinite;vertical-align:text-bottom}
   @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion: reduce){ .inputbox .cursor{animation:none} .cta-wrap{transition:none} }
   .sendbtn{
     width:42px;height:42px;border-radius:50%;background:var(--wa-teal);border:none;flex:none;
     display:flex;align-items:center;justify-content:center;
@@ -204,16 +205,17 @@
     var i = 0;
     status.textContent = "מקלידים בשבילכם…";
     status.classList.add("typing");
-    var speed = Math.max(28, Math.min(70, 2400 / Math.max(message.length, 1)));
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var speed = reduceMotion ? 0 : Math.max(28, Math.min(70, 2400 / Math.max(message.length, 1)));
     function typeNext(){
       if(i < message.length){
         typed.textContent += message[i++];
         setTimeout(typeNext, speed + Math.random() * 30);
       } else {
-        setTimeout(sendIt, 650);
+        setTimeout(sendIt, reduceMotion ? 0 : 650);
       }
     }
-    setTimeout(typeNext, 700);
+    setTimeout(typeNext, reduceMotion ? 0 : 700);
 
     function sendIt(){
       // move the message into the chat as a sent bubble
