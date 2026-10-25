@@ -1,0 +1,8 @@
+# Let Me Instinct That For You
+
+> Hebrew web tool. You write a question, get a share link. Whoever opens the link sees the message typed out in a WhatsApp-style chat, then WhatsApp opens with Instinct (the AI assistant) and the message prefilled. The sender presses send themselves; nothing is sent automatically.
+
+- Inspired by "Let Me Google That For You".
+- The link generator is free and needs no signup or install. Using Instinct itself is governed separately by Instinct. Works on phone and desktop browsers.
+- Home: https://let-me-instinct.pages.dev/
+- Link format: https://let-me-instinct.pages.dev/?q=<url-encoded message>
