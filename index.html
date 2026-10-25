@@ -131,7 +131,7 @@
   var q = (params.get("q") || "").trim();
 
   function waUrl(text){
-    return "https://wa.me/" + INSTINCT_NUMBER + "?text=" + encodeURIComponent(text);
+    return "https://api.whatsapp.com/send?phone=" + INSTINCT_NUMBER + "&text=" + encodeURIComponent(text);
   }
 
   if(!q){ renderGenerator(); } else { renderPlayer(q); }
